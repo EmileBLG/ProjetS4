@@ -41,6 +41,30 @@ proc checkRequiredFiles { origin_dir} {
   set files [list \
    "$origin_dir/../vhdSources/testPatternGen2.vhd" \
    "$origin_dir/../vhdSources/atelier4_wrapper.vhd" \
+   "$origin_dir/../vhdSources/PPU_top.vhd" \
+   "$origin_dir/../vhdSources/manager_game_data.vhd" \
+   "$origin_dir/../vhdSources/manager_timing.vhd" \
+   "$origin_dir/../vhdSources/node_top.vhd" \
+   "$origin_dir/../vhdSources/node_background.vhd" \
+   "$origin_dir/../vhdSources/node_actor.vhd" \
+   "$origin_dir/../vhdSources/space_converter_top.vhd" \
+   "$origin_dir/../vhdSources/space_converter_absolute.vhd" \
+   "$origin_dir/../vhdSources/space_converter_relative.vhd" \
+   "$origin_dir/../vhdSources/indexing_top.vhd" \
+   "$origin_dir/../vhdSources/indexing_actor_visible.vhd" \
+   "$origin_dir/../vhdSources/indexing_MUX_visible.vhd" \
+   "$origin_dir/../vhdSources/sprite_top.vhd" \
+   "$origin_dir/../vhdSources/sprite_map_index.vhd" \
+   "$origin_dir/../vhdSources/sprite_tile_index.vhd" \
+   "$origin_dir/../vhdSources/sprite_map_LUT.vhd" \
+   "$origin_dir/../vhdSources/sprite_tile_LUT.vhd" \
+   "$origin_dir/../vhdSources/sprite_trsp.vhd" \
+   "$origin_dir/../vhdSources/layer_picker_top.vhd" \
+   "$origin_dir/../vhdSources/layer_picker_block.vhd" \
+   "$origin_dir/../vhdSources/layer_picker_color.vhd" \
+   "$origin_dir/../vhdSources/layer_picker_hidden.vhd" \
+   "$origin_dir/../vhdSources/color_converter.vhd" \
+
    "$origin_dir/../constraints/atelier4Constraints.xdc" \
   ]
   foreach ifile $files {
@@ -196,6 +220,30 @@ set obj [get_filesets sources_1]
 set files [list \
  [file normalize "${origin_dir}/../vhdSources/testPatternGen2.vhd"]\
  [file normalize "${origin_dir}/../vhdSources/atelier4_wrapper.vhd"]\
+ [file normalize "${origin_dir}/../vhdSources/PPU_top.vhd"]\
+ [file normalize "${origin_dir}/../vhdSources/manager_game_data.vhd"]\
+ [file normalize "${origin_dir}/../vhdSources/manager_timing.vhd"]\
+ [file normalize "${origin_dir}/../vhdSources/node_top.vhd"]\
+ [file normalize "${origin_dir}/../vhdSources/node_background.vhd"]\
+ [file normalize "${origin_dir}/../vhdSources/node_actor.vhd"]\
+ [file normalize "${origin_dir}/../vhdSources/space_converter_top.vhd"]\
+ [file normalize "${origin_dir}/../vhdSources/space_converter_absolute.vhd"]\
+ [file normalize "${origin_dir}/../vhdSources/space_converter_relative.vhd"]\
+ [file normalize "${origin_dir}/../vhdSources/indexing_top.vhd"]\
+ [file normalize "${origin_dir}/../vhdSources/indexing_actor_visible.vhd"]\
+ [file normalize "${origin_dir}/../vhdSources/indexing_MUX_visible.vhd"]\
+ [file normalize "${origin_dir}/../vhdSources/sprite_top.vhd"]\
+ [file normalize "${origin_dir}/../vhdSources/sprite_map_index.vhd"]\
+ [file normalize "${origin_dir}/../vhdSources/sprite_tile_index.vhd"]\
+ [file normalize "${origin_dir}/../vhdSources/sprite_map_LUT.vhd"]\
+ [file normalize "${origin_dir}/../vhdSources/sprite_tile_LUT.vhd"]\
+ [file normalize "${origin_dir}/../vhdSources/sprite_trsp.vhd"]\
+ [file normalize "${origin_dir}/../vhdSources/layer_picker_top.vhd"]\
+ [file normalize "${origin_dir}/../vhdSources/layer_picker_block.vhd"]\
+ [file normalize "${origin_dir}/../vhdSources/layer_picker_color.vhd"]\
+ [file normalize "${origin_dir}/../vhdSources/layer_picker_hidden.vhd"]\
+ [file normalize "${origin_dir}/../vhdSources/color_converter.vhd"]\
+
 ]
 # ==>Ne pas créer de copies locales des fichiers sources dans le projet Vivado et garder une seule et unique version 
 add_files -norecurse -fileset $obj $files
@@ -213,6 +261,122 @@ set file "$origin_dir/../vhdSources/atelier4_wrapper.vhd"
 set file [file normalize $file] 
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/../vhdSources/PPU_top.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/../vhdSources/manager_game_data.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/../vhdSources/manager_timing.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/../vhdSources/node_top.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/../vhdSources/node_background.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/../vhdSources/node_actor.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/../vhdSources/space_converter_top.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/../vhdSources/space_converter_absolute.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/../vhdSources/space_converter_relative.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/../vhdSources/indexing_top.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/../vhdSources/indexing_actor_visible.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/../vhdSources/indexing_MUX_visible.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/../vhdSources/sprite_top.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/../vhdSources/sprite_map_index.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/../vhdSources/sprite_tile_index.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/../vhdSources/sprite_map_LUT.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/../vhdSources/sprite_tile_LUT.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/../vhdSources/sprite_trsp.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/../vhdSources/layer_picker_top.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/../vhdSources/layer_picker_block.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/../vhdSources/layer_picker_color.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/../vhdSources/layer_picker_hidden.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/../vhdSources/color_converter.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
 
 
 # Set 'sources_1' fileset properties
