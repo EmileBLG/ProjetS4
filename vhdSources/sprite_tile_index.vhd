@@ -32,14 +32,16 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity sprite_tile_index is
---Port ( 
-
---);
+Port ( 
+    PaletteIndexX : in std_logic_vector (3 downto 0);
+    PaletteIndexY : in std_logic_vector (3 downto 0);
+    PaletteIndex :  out std_logic_vector (7 downto 0) 
+);
 end sprite_tile_index;
 
 architecture Behavioral of sprite_tile_index is
 
-
 begin
-
+    PaletteIndex (7 downto 4) <= PaletteIndexX;
+    PaletteIndex (3 downto 0) <= PaletteIndexY;
 end Behavioral;
