@@ -41,6 +41,6 @@ end sprite_map_index;
 
 architecture Behavioral of sprite_map_index is
 begin
-    TileIndex (11 downto 6) <= TileIndexX;
-    TileIndex (5 downto 0) <= TileIndexY;
+    TileIndex (11 downto 6) <= TileIndexY;
+    TileIndex (5 downto 0) <= TileIndexX;
 end Behavioral;
