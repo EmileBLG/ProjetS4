@@ -42,6 +42,6 @@ end sprite_tile_index;
 architecture Behavioral of sprite_tile_index is
 
 begin
-    PaletteIndex (7 downto 4) <= PaletteIndexX;
-    PaletteIndex (3 downto 0) <= PaletteIndexY;
+    PaletteIndex (7 downto 4) <= PaletteIndexY;
+    PaletteIndex (3 downto 0) <= PaletteIndexX;
 end Behavioral;
