@@ -1,0 +1,4 @@
+﻿  flappy.c
+C:\Users\etien\source\repos\flappy\flappy\flappy.c(113,17): warning C4244: '+=' : conversion de 'float' en 'int', perte possible de données
+C:\Users\etien\source\repos\flappy\flappy\flappy.c(114,27): warning C4305: '+=' : troncation de 'double' à 'float'
+  flappy.vcxproj -> C:\Users\etien\source\repos\flappy\x64\Debug\flappy.exe
