@@ -42,12 +42,12 @@ end ActorVisibility;
 architecture Behavioral of ActorVisibility is
 
 begin
-
-IsHidden <= '0';
 process(RelativePosX_i,RelativePosY_i,ActorSizeX, ActorSizeY)
 begin 
     if (RelativePosX_i > ActorSizeX or RelativePosY_i > ActorSizeY) then
         IsHidden <= '1';
+    elsif (RelativePosX_i < ActorSizeX or RelativePosY_i < ActorSizeY) then
+        IsHidden <= '0';
     end if;
 end process;
 end Behavioral;
