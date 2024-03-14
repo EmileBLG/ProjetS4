@@ -33,7 +33,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity sprite_map_LUT is
 Port ( 
-    i_index : in std_logic_vector (11 downto 0);
+    i_map_index : in std_logic_vector (11 downto 0);
     i_sprite_picker : in std_logic_vector (4 downto 0);
     o_tile_type : out std_logic_vector (5 downto 0)
 );
@@ -42,7 +42,7 @@ end sprite_map_LUT;
 architecture Behavioral of sprite_map_LUT is
 
     type LUT is array (natural range <>) of std_logic_vector (5 downto 0);
-    signal LUT_map : LUT(0 to 255) := (
+    signal LUT_map : LUT(0 to 4095) := (
     "000000",
     "000001",
     "000010",
@@ -54,11 +54,11 @@ architecture Behavioral of sprite_map_LUT is
     others => "000000"
     );
     
-    signal s_LUT_index : integer range 0 to 255;
+    signal s_LUT_index : integer range 0 to 4095;
     
 begin
     
-    s_LUT_index <= to_integer(unsigned(i_index));
+    s_LUT_index <= to_integer(unsigned(i_map_index)); -- TODO: add support for i_sprite_picker
     
     o_tile_type <= LUT_map(s_LUT_index);
 
