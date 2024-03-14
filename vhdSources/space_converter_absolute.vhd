@@ -32,14 +32,23 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity space_converter_absolute is
---Port ( 
+Port (
+    CameraPosX 			: in std_logic_vector (9 downto 0);
+	CameraPosY 			: in std_logic_vector (9 downto 0);
+	PixelPosX 			: in std_logic_vector (9 downto 0);
+	PixelPosY	        : in std_logic_vector (9 downto 0);
+	AbsolutePosX        : out std_logic_vector (9 downto 0);
+	AbsolutePosY 		: out std_logic_vector (9 downto 0)
 
---);
+);
 end space_converter_absolute;
 
 architecture Behavioral of space_converter_absolute is
-
-
 begin
 
+process(CameraPosX, CameraPosY, PixelPosX, PixelPosY) is
+begin
+    AbsolutePosX <= std_logic_vector(unsigned(CameraPosX)+ unsigned(PixelPosX));
+    AbsolutePosY <= std_logic_vector(unsigned(CameraPosY)+ unsigned(PixelPosY));
+end process;
 end Behavioral;
