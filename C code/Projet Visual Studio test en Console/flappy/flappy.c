@@ -12,9 +12,9 @@ int BackgroundY = 0;
 int flappyX = 0;
 int flappyY = 180;
 
-int tuyauxX[NBTUYAUX] = { 500, 500, 800, 800};
+int tuyauxX[NB_TUYAUX] = { 500, 500, 800, 800};
 
-int tuyauxY[NBTUYAUX] = { 900, 300, 990, 350};
+int tuyauxY[NB_TUYAUX] = { 900, 300, 990, 350};
 
 int image_debut_fin_partieX = 0;
 int image_debut_fin_partieY = 0;
@@ -52,14 +52,14 @@ void printItAll(int flappyY) {
         for (int j = 0; j < COLS; j++)
             matrix[i][j] = 0;
 
-
-    if (flappyY >= 0 && flappyY <= ROWS - 8)
-        for (int i = flappyY; i < flappyY + 8; i++)
-            for (int j = 0; j < 8; j++)
+    //dessiner flappy a X = 240 'a 320
+    if (flappyY >= 0 && flappyY <= ROWS - SIZE_FLAPPY/10)
+        for (int i = flappyY; i < flappyY + SIZE_FLAPPY/10; i++)
+            for (int j = 0; j < SIZE_FLAPPY/10; j++)
                 matrix[i][j + 24] = 1;
 
-    for (int k = 0; k < NBTUYAUX; k++)
-        for (int i = tuyauxY[k] / 10; i < tuyauxY[k] / 10 + 18; i++)
+    for (int k = 0; k < NB_TUYAUX; k++)
+        for (int i = tuyauxY[k] / 10; i < tuyauxY[k] / 10 + HAUTEUR_TUYAUX/10; i++)
             for (int j = tuyauxX[k] / 10; j < tuyauxX[k] / 10 + 5; j++){
                 int iMod = i % (GRILLE/10);
                 int jMod = j % (GRILLE/10);
@@ -90,22 +90,32 @@ int controleDePartie(int* tuyauxX, int* flappyY) {
     
     
 
-    for (int i = 0; i < NBTUYAUX; i++)
+    for (int i = 0; i < NB_TUYAUX; i++) {
         if (tuyauxX[i] <= 0)
             tuyauxX[i] = GRILLE;
         else
             tuyauxX[i] -= 8;
 
-    if (tuyauxX[0] >= 300 && tuyauxX[0] <= 360) {
-        if (*flappyY >= tuyauxY[0])
-            return 0;
+        if (tuyauxX[i] >= 240 && tuyauxX[i] <= 320) {
+            int PosTuyauxHigh = (tuyauxY[i] + HAUTEUR_TUYAUX)% GRILLE;
+            int PosTuyauxLow = tuyauxY[i];
+
+            if (PosTuyauxLow > PosTuyauxHigh)
+                PosTuyauxLow = 0;
+            if ( *flappyY >= PosTuyauxLow)
+                if(*flappyY <= PosTuyauxHigh)
+                    return 0;
+            if (*flappyY + SIZE_FLAPPY >= PosTuyauxLow)
+                if(*flappyY + SIZE_FLAPPY <= PosTuyauxHigh)
+                    return 0;
+        }
     }
     return 1;
 }
 
 
 void genererDeplacementYflappy(int *flappyY, int *etatBouton, float *vitesseFlappyY) {
-    const int hauteurMax = 360-80; // Hauteur maximale du Flappy Bird (nb pixelY - grosseurY du flappy)
+    const int hauteurMin = 360- SIZE_FLAPPY; // Hauteur max du Flappy Bird (vers le bas) (nb pixelY - grosseurY du flappy)
 
     if (*etatBouton == 1) {
         *vitesseFlappyY = -4; // Simuler un saut
@@ -118,8 +128,8 @@ void genererDeplacementYflappy(int *flappyY, int *etatBouton, float *vitesseFlap
     if (*flappyY < 0) {
         *flappyY = 0;
     }
-    if (*flappyY > hauteurMax) {
-        *flappyY = hauteurMax;
+    if (*flappyY > hauteurMin) {
+        *flappyY = hauteurMin;
     }
 }
 
@@ -133,7 +143,7 @@ int main() {
     clock_t last_frame_time = clock();
     float vitesseFlappyY = 2;
     int gameOn = 1;
-    while (gameOn = 1) {
+    while (gameOn) {
         clock_t current_time = clock();
         clock_t elapsed_time_ticks = current_time - last_frame_time;
 

@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\etien\\source\\repos\\flappy\\",
+  "WorkspaceRootPath": "C:\\Users\\etien\\Documents\\GitHub\\ProjetS42\\C code\\Projet Visual Studio test en Console\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3039B138-BF7D-4C33-B1CA-4BD36B1E78F6}|flappy\\flappy.vcxproj|C:\\Users\\etien\\source\\repos\\flappy\\flappy\\flappy.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{3039B138-BF7D-4C33-B1CA-4BD36B1E78F6}|flappy\\flappy.vcxproj|C:\\Users\\etien\\Documents\\GitHub\\ProjetS42\\C code\\Projet Visual Studio test en Console\\flappy\\flappy.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{3039B138-BF7D-4C33-B1CA-4BD36B1E78F6}|flappy\\flappy.vcxproj|solutionrelative:flappy\\flappy.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3039B138-BF7D-4C33-B1CA-4BD36B1E78F6}|flappy\\flappy.vcxproj|C:\\Users\\etien\\source\\repos\\flappy\\flappy\\flappy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{3039B138-BF7D-4C33-B1CA-4BD36B1E78F6}|flappy\\flappy.vcxproj|C:\\Users\\etien\\Documents\\GitHub\\ProjetS42\\C code\\Projet Visual Studio test en Console\\flappy\\flappy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{3039B138-BF7D-4C33-B1CA-4BD36B1E78F6}|flappy\\flappy.vcxproj|solutionrelative:flappy\\flappy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -28,11 +28,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "flappy.c",
-              "DocumentMoniker": "C:\\Users\\etien\\source\\repos\\flappy\\flappy\\flappy.c",
+              "DocumentMoniker": "C:\\Users\\etien\\Documents\\GitHub\\ProjetS42\\C code\\Projet Visual Studio test en Console\\flappy\\flappy.c",
               "RelativeDocumentMoniker": "flappy\\flappy.c",
-              "ToolTip": "C:\\Users\\etien\\source\\repos\\flappy\\flappy\\flappy.c",
+              "ToolTip": "C:\\Users\\etien\\Documents\\GitHub\\ProjetS42\\C code\\Projet Visual Studio test en Console\\flappy\\flappy.c",
               "RelativeToolTip": "flappy\\flappy.c",
-              "ViewState": "AQIAAE4AAAAAAAAAAAAAAGQAAAAVAAAA",
+              "ViewState": "AQIAADsAAAAAAAAAAAArwGwAAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-03-12T13:56:48.173Z",
               "EditorCaption": ""
@@ -41,11 +41,11 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "flappy.h",
-              "DocumentMoniker": "C:\\Users\\etien\\source\\repos\\flappy\\flappy\\flappy.h",
+              "DocumentMoniker": "C:\\Users\\etien\\Documents\\GitHub\\ProjetS42\\C code\\Projet Visual Studio test en Console\\flappy\\flappy.h",
               "RelativeDocumentMoniker": "flappy\\flappy.h",
-              "ToolTip": "C:\\Users\\etien\\source\\repos\\flappy\\flappy\\flappy.h",
+              "ToolTip": "C:\\Users\\etien\\Documents\\GitHub\\ProjetS42\\C code\\Projet Visual Studio test en Console\\flappy\\flappy.h",
               "RelativeToolTip": "flappy\\flappy.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAASAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-03-12T13:57:04.342Z",
               "EditorCaption": ""
