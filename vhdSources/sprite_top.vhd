@@ -128,5 +128,6 @@ begin
         o_is_hidden => o_is_hidden
     );
     
+    o_color_code <= s_color_code;
     
 end Behavioral;
