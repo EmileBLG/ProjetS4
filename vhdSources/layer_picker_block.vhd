@@ -32,14 +32,23 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity layer_picker_block is
---Port ( 
-
---);
+Port ( 
+    i_color_code_a : in std_logic_vector (3 downto 0); -- layer under 
+    i_is_hidden_a : in std_logic;
+    i_color_code_b : in std_logic_vector (3 downto 0); -- layer above -- takes priority
+    i_is_hidden_b : in std_logic;
+    o_color_code : out std_logic_vector (3 downto 0);
+    o_is_hidden : out std_logic
+);
 end layer_picker_block;
 
 architecture Behavioral of layer_picker_block is
-
+    
 
 begin
+    
+    o_color_code <= i_color_code_b when (i_is_hidden_b = '0') else i_color_code_a;
+    
+    o_is_hidden <= i_is_hidden_a AND i_is_hidden_b;
 
 end Behavioral;
