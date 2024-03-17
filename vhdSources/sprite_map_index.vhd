@@ -32,14 +32,16 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity sprite_map_index is
---Port ( 
-
---);
+Port ( 
+    i_map_index_x:     in std_logic_vector (5 downto 0);
+    i_map_index_y:     in std_logic_vector (5 downto 0);
+    o_map_index:      out std_logic_vector (11 downto 0)
+);
 end sprite_map_index;
 
 architecture Behavioral of sprite_map_index is
-
-
 begin
-
+    --TileIndex (11 downto 6) <= TileIndexY;
+    --TileIndex (5 downto 0) <= TileIndexX;
+    o_map_index <= i_map_index_y & i_map_index_x;
 end Behavioral;
