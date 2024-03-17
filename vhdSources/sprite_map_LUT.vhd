@@ -54,11 +54,13 @@ architecture Behavioral of sprite_map_LUT is
     others => "000000"
     );
     
+    -- signal s_index : std_logic_vector(13 downto 0); 
     signal s_LUT_index : integer range 0 to 4095;
     
 begin
     
-    s_LUT_index <= to_integer(unsigned(i_map_index)); -- TODO: add support for i_sprite_picker
+    -- s_index <= i_sprite_picker & i_map_index; -- TODO: change this to an addition
+    s_LUT_index <= to_integer(unsigned( i_map_index )); -- TODO: swap i_map_index with s_index
     
     o_tile_type <= LUT_map(s_LUT_index);
 

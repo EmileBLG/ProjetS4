@@ -41,15 +41,8 @@ end sprite_tile_LUT;
 
 architecture Behavioral of sprite_tile_LUT is
 
-    --
-    --
-    -- change it and make it 8 tile type per actor
-    -- (for a total of 64 tiles if we have 8 actors)
-    --
-    --
-
     type LUT is array (natural range <>) of std_logic_vector (3 downto 0);
-    signal LUT_tile : LUT(0 to 16383) := (
+    signal LUT_tile : LUT(0 to 2047) := (
     "0000",
     "0001",
     "0010",
@@ -61,11 +54,13 @@ architecture Behavioral of sprite_tile_LUT is
     others => "0000"
     );
     
-    signal s_index : std_logic_vector(13 downto 0); 
-    signal s_LUT_index : integer range 0 to 16383; -- 16'384 pixels (64 tile x 16x16 pixels)
+    signal s_index : std_logic_vector(13 downto 0); -- 6 bits + 8 bits = 14 bits
+    signal s_LUT_index : integer range 0 to 2047; -- 2048 pixels (8 tile x 16x16 pixels)
 
 begin
     s_index <= i_tile_type & i_tile_index;
-    s_LUT_index <= to_integer(unsigned( s_index ));
+    s_LUT_index <= to_integer(unsigned( s_index(10 downto 0) )); -- keep 11 bits (2^11 = 2048)
+    
+    o_color_code <= LUT_tile(s_LUT_index);
 
 end Behavioral;
