@@ -31,6 +31,8 @@ use IEEE.NUMERIC_STD.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+use work.package_LUT_actor_1_tile.all;
+
 entity sprite_top is
 Port ( 
     i_map_index_x : in std_logic_vector (5 downto 0);
@@ -71,6 +73,9 @@ architecture Behavioral of sprite_top is
     end component;
     
     component sprite_tile_LUT is
+        generic (
+            tile_LUT : P_LUT_TILE
+        );
         port (
             i_tile_index : in std_logic_vector (7 downto 0);
             i_tile_type : in std_logic_vector (5 downto 0);
@@ -115,11 +120,15 @@ begin
     );
     
     inst_tile_LUT : sprite_tile_LUT
-    port map(
+    generic map (
+        tile_LUT => LUT_TILE_ACTOR_1
+    )
+    port map (
         i_tile_index => s_tile_index,
         i_tile_type => s_tile_type,
         o_color_code => s_color_code
     );
+    
     
     inst_trsp : sprite_trsp
     port map(
