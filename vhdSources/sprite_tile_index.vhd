@@ -33,15 +33,16 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity sprite_tile_index is
 Port ( 
-    PaletteIndexX : in std_logic_vector (3 downto 0);
-    PaletteIndexY : in std_logic_vector (3 downto 0);
-    PaletteIndex :  out std_logic_vector (7 downto 0) 
+    i_tile_index_x : in std_logic_vector (3 downto 0);
+    i_tile_index_y : in std_logic_vector (3 downto 0);
+    o_tile_index :  out std_logic_vector (7 downto 0) 
 );
 end sprite_tile_index;
 
 architecture Behavioral of sprite_tile_index is
 
 begin
-    PaletteIndex (7 downto 4) <= PaletteIndexY;
-    PaletteIndex (3 downto 0) <= PaletteIndexX;
+    --o_tile_index (7 downto 4) <= i_tile_index_y;
+    --o_tile_index (3 downto 0) <= i_tile_index_x;
+    o_tile_index <= i_tile_index_y & i_tile_index_x;
 end Behavioral;
