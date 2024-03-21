@@ -32,14 +32,18 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity sprite_trsp is
---Port ( 
-
---);
+port (
+    i_color_code : in std_logic_vector (3 downto 0);
+    i_is_hidden : in std_logic;
+    o_is_hidden : out std_logic
+);
 end sprite_trsp;
 
 architecture Behavioral of sprite_trsp is
 
 
 begin
+    
+    o_is_hidden <= '1' when (i_color_code = "0000" OR i_is_hidden = '1') else '0';
 
 end Behavioral;

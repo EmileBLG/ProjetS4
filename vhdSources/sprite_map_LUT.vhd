@@ -43,14 +43,14 @@ architecture Behavioral of sprite_map_LUT is
 
     type LUT is array (natural range <>) of std_logic_vector (5 downto 0);
     signal LUT_map : LUT(0 to 4095) := (
-    "100000",
-    "010111",
-    "001010",
+    "000010",
+    "000001",
+    "000000",
     "000011",
     "000100",
     "000101",
     "000110",
-    "000111",
+    "001111",
     others => "000000"
     );
     
@@ -63,7 +63,7 @@ begin
     s_LUT_index <= to_integer(unsigned( i_map_index )); -- TODO: swap i_map_index with s_index
     
     
-    o_tile_type <= LUT_map(s_LUT_index);
+    o_tile_type <= LUT_map(s_LUT_index) ;
 
 
 end Behavioral;
