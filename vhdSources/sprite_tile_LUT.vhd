@@ -32,7 +32,7 @@ use IEEE.NUMERIC_STD.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-use work.package_LUT_actor_1_tile.all;
+use work.package_LUT_actor.all;
 
 entity sprite_tile_LUT is
 -- testing with generics: would be nice to expose the LUT to the block design so we can have them in another file

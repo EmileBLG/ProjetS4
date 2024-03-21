@@ -31,7 +31,7 @@ use IEEE.NUMERIC_STD.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-use work.package_LUT_actor_1_tile.all;
+use work.package_LUT_actor.all;
 
 entity sprite_top is
 Port ( 
@@ -121,7 +121,7 @@ begin
     
     inst_tile_LUT : sprite_tile_LUT
     generic map (
-        tile_LUT => LUT_TILE_ACTOR_1
+        tile_LUT => P_LUT_TILE_ACTOR_1
     )
     port map (
         i_tile_index => s_tile_index,
