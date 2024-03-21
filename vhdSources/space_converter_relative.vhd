@@ -20,23 +20,26 @@ signal signv : std_logic_vector(9 downto 0);
 begin
 process(ObjectPosX, ObjectPosY, AbsolutePosX, AbsolutePosY) is
 begin
-    --RelativePosX <= std_logic_vector(unsigned(unsigned(AbsolutePosX) - unsigned(ObjectPosX)) mod unsigned(AbsolutePosX))
-    --RelativePosX <= std_logic_vector(unsigned(unsigned(AbsolutePosX) - unsigned(ObjectPosX)));
-    --RelativePosX <= std_logic_vector(unsigned(AbsolutePosX) - unsigned(ObjectPosX));
-    --RelativePosX <= std_logic_vector((unsigned(ObjectPosX)) mod unsigned(AbsolutePosX));
-    --RelativePosX <= std_logic_vector(
-      --              unsigned(
-        --                std_logic_vector(
-          --                  --unsigned(
-            --                    unsigned(AbsolutePosX) - unsigned(ObjectPosX)
-              --                  --)
-                --                )
-                  --              )
-                    --   mod unsigned (AbsolutePosX)
-                      -- )
-                       --;-- on veut faire (absolu - objet) mod objet
-        --RelativePosX <= std_logic_vector(unsigned(- signed(ObjectPosX)) mod unsigned(AbsolutePosX));
-    RelativePosX <= std_logic_vector(abs(signed(AbsolutePosX) - signed(ObjectPosX)));
-    RelativePosY <= std_logic_vector(abs(signed(AbsolutePosY) - signed(ObjectPosY)));
+    RelativePosX <= std_logic_vector(
+                    (unsigned(
+                            signed(
+                                unsigned(AbsolutePosX) - unsigned(ObjectPosX)
+                                )
+                                +1023
+                                )
+                                mod 1023)+1
+                       )
+                       ;-- on veut faire (absolu - objet) mod 1024
+
+    RelativePosY <= std_logic_vector(
+                    (unsigned(
+                            signed(
+                                unsigned(AbsolutePosY) - unsigned(ObjectPosY)
+                                )
+                                +1023
+                                )
+                                mod 1023)+1
+                       )
+                       ;
 end process;
 end Behavioral;
