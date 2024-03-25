@@ -32,14 +32,21 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity node_background is
---Port ( 
-
---);
+Port (
+    i_absolute_pos_x : in std_logic_vector (9 downto 0);
+    i_absolute_pos_y : in std_logic_vector (9 downto 0);
+    i_sprite_picker : in std_logic_vector (4 downto 0);
+    o_color_code : out std_logic_vector (3 downto 0);
+    o_is_hidden : out std_logic
+);
 end node_background;
 
 architecture Behavioral of node_background is
 
 
 begin
-
+    
+    
+    o_is_hidden <= '0'; -- background cannot be hidden
+    
 end Behavioral;

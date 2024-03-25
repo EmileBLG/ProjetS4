@@ -32,9 +32,18 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity node_actor is
---Port ( 
+Port ( 
+    i_object_pos_x : in std_logic_vector (9 downto 0);
+    i_object_pos_y : in std_logic_vector (9 downto 0);
+    i_absolute_pos_x : in std_logic_vector (9 downto 0);
+    i_absolute_pos_y : in std_logic_vector (9 downto 0);
+    i_actor_size_x : in std_logic_vector (9 downto 0);
+    i_actor_size_y : in std_logic_vector (9 downto 0);
+    i_sprite_picker : in std_logic_vector (4 downto 0);
+    o_color_code : out std_logic_vector (3 downto 0);
+    o_is_hidden : out std_logic
 
---);
+);
 end node_actor;
 
 architecture Behavioral of node_actor is
