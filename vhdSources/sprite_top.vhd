@@ -65,6 +65,9 @@ architecture Behavioral of sprite_top is
     end component;
     
     component sprite_map_LUT is
+        generic (
+            map_LUT : P_LUT_MAP
+        );
         port (
             i_map_index : in std_logic_vector (11 downto 0);
             i_sprite_picker : in std_logic_vector (4 downto 0);
@@ -113,6 +116,9 @@ begin
     );
     
     inst_map_LUT : sprite_map_LUT
+    generic map (
+        map_LUT => P_LUT_MAP_ACTOR_1
+    )
     port map(
         i_map_index => s_map_index,
         i_sprite_picker => i_sprite_picker,
