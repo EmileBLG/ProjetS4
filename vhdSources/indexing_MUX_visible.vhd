@@ -31,25 +31,20 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Mux is
-    Port ( RelativePosX_i : in STD_LOGIC_VECTOR (9 downto 0);
-           RelativePosY_i : in STD_LOGIC_VECTOR (9 downto 0);
-           IsHidden : in STD_LOGIC;
-           RelativePosX_o : out STD_LOGIC_VECTOR (9 downto 0);
-           RelativePosY_o : out STD_LOGIC_VECTOR (9 downto 0));
-end Mux;
+entity indexing_mux_visible is
+Port ( 
+    i_pos_x : in STD_LOGIC_VECTOR (9 downto 0);
+    i_pos_y : in STD_LOGIC_VECTOR (9 downto 0);
+    i_is_hidden : in STD_LOGIC;
+    o_pos_x : out STD_LOGIC_VECTOR (9 downto 0);
+    o_pos_y : out STD_LOGIC_VECTOR (9 downto 0)
+);
+end indexing_mux_visible;
 
-architecture Behavioral of Mux is
+architecture Behavioral of indexing_mux_visible is
 
 begin
-process(RelativePosY_i, RelativePosX_i, IsHidden)
-begin 
-    if isHidden = '1' then
-        RelativePosX_o <= "000000000" ; 
-        RelativePosY_o <= "000000000" ;
-    elsif isHidden = '0' then
-        RelativePosX_o <= RelativePosX_i ; 
-        RelativePosY_o <= RelativePosY_i ;
-    end if;
-end process;
+    o_pos_x <= "000000000" when (i_is_hidden = '1') else i_pos_x;
+    o_pos_y <= "000000000" when (i_is_hidden = '1') else i_pos_y;
+    
 end Behavioral;

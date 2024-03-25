@@ -31,62 +31,68 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Position_To_Lut_Index is
-    Port ( RelativePosX : in STD_LOGIC_VECTOR (9 downto 0);
-           RelativePosY : in STD_LOGIC_VECTOR (9 downto 0);
-           TileIndexX : out STD_LOGIC_VECTOR (5 downto 0);
-           TileIndexY : out STD_LOGIC_VECTOR (5 downto 0);
-           PaletteIndexX : out STD_LOGIC_VECTOR (3 downto 0);
-           PaletteIndexY : out STD_LOGIC_VECTOR (3 downto 0);
-           IsHidden : out STD_LOGIC);
-end Position_To_Lut_Index;
+entity indexing_top is
+    Port ( i_relative_pos_x : in STD_LOGIC_VECTOR (9 downto 0);
+           i_relative_pos_y : in STD_LOGIC_VECTOR (9 downto 0);
+           i_actor_size_x : in STD_LOGIC_VECTOR (9 downto 0);
+           i_actor_size_y : in STD_LOGIC_VECTOR (9 downto 0);
+           o_map_index_x : out STD_LOGIC_VECTOR (5 downto 0);
+           o_map_index_y : out STD_LOGIC_VECTOR (5 downto 0);
+           o_tile_index_x : out STD_LOGIC_VECTOR (3 downto 0);
+           o_tile_index_y : out STD_LOGIC_VECTOR (3 downto 0);
+           o_is_hidden : out STD_LOGIC);
+end indexing_top;
 
-architecture Behavioral of Position_To_Lut_Index is
+architecture Behavioral of indexing_top is
 
-component ActorVisibility is
-    Port ( RelativePosX_i : in STD_LOGIC_VECTOR (9 downto 0);
-           RelativePosY_i : in STD_LOGIC_VECTOR (9 downto 0);
-           ActorSizeX : in STD_LOGIC_VECTOR (9 downto 0);
-           ActorSizeY : in STD_LOGIC_VECTOR (9 downto 0);
-           IsHidden : out STD_LOGIC);
-end component ;
+    component indexing_actor_visible is
+        Port ( 
+            i_pos_x : in STD_LOGIC_VECTOR (9 downto 0);
+            i_pos_y : in STD_LOGIC_VECTOR (9 downto 0);
+            i_actor_size_x : in STD_LOGIC_VECTOR (9 downto 0);
+            i_actor_size_y : in STD_LOGIC_VECTOR (9 downto 0);
+            o_is_hidden : out STD_LOGIC
+        );
+    end component ;
 
-component Mux is
-    Port ( RelativePosX_i : in STD_LOGIC_VECTOR (9 downto 0);
-           RelativePosY_i : in STD_LOGIC_VECTOR (9 downto 0);
-           IsHidden : in STD_LOGIC;
-           RelativePosX_o : out STD_LOGIC_VECTOR (9 downto 0);
-           RelativePosY_o : out STD_LOGIC_VECTOR (9 downto 0));
-end component ;
-
-
-signal isHidden_s : std_logic;
-signal RelativePosX_s : std_logic_vector(9 downto 0); 
-signal RelativePosY_s : std_logic_vector(9 downto 0);
-
+    component indexing_mux_visible is
+        Port ( 
+            i_pos_x : in STD_LOGIC_VECTOR (9 downto 0);
+            i_pos_y : in STD_LOGIC_VECTOR (9 downto 0);
+            i_is_hidden : in STD_LOGIC;
+            o_pos_x : out STD_LOGIC_VECTOR (9 downto 0);
+            o_pos_y : out STD_LOGIC_VECTOR (9 downto 0)
+        );
+    end component ;
+    
+    
+    signal s_is_hidden : std_logic;
+    signal s_relative_pos_x : std_logic_vector(9 downto 0); 
+    signal s_relative_pos_y : std_logic_vector(9 downto 0);
+    
 begin
-Port_Map_ActorVisibility : ActorVisibility
-Port map(
-    RelativePosX_i => RelativePosX,
-    RelativePosY_i => RelativePosX,
-    ActorSizeX => "000000000",
-    ActorSizeY => "000000000",
-    IsHidden => isHidden_s
-);
+    inst_indexing_actor_visible : indexing_actor_visible
+    port map(
+        i_pos_x => i_relative_pos_x,
+        i_pos_y => i_relative_pos_y,
+        i_actor_size_x => i_actor_size_x,
+        i_actor_size_y => i_actor_size_y,
+        o_is_hidden => s_is_hidden
+    );
+    
+    inst_indexing_mux_visible : indexing_mux_visible
+    port map(
+        i_pos_x => i_relative_pos_x,
+        i_pos_y => i_relative_pos_y,
+        i_is_hidden => s_is_hidden,
+        o_pos_x => s_relative_pos_x,
+        o_pos_y => s_relative_pos_y
+    );
 
-Port_Map_Mux : Mux
-Port map(
-    RelativePosX_i => RelativePosX,
-    RelativePosY_i => RelativePosX,
-    IsHidden => isHidden_s,
-    RelativePosX_o => RelativePosX_s,
-    RelativePosY_o => RelativePosY_s
-);
-
-TileIndexX <= RelativePosX_s(9 downto 4);
-TileIndexX <= RelativePosY_s(9 downto 4);
-PaletteIndexX <= RelativePosX_s(3 downto 0);
-PaletteIndexY <= RelativePosY_s(3 downto 0);
-IsHidden <= isHidden_s;
-
+    o_map_index_x <= s_relative_pos_x(9 downto 4);
+    o_map_index_y <= s_relative_pos_y(9 downto 4);
+    o_tile_index_x <= s_relative_pos_x(3 downto 0);
+    o_tile_index_y <= s_relative_pos_y(3 downto 0);
+    o_is_hidden <= s_is_hidden;
+    
 end Behavioral;
