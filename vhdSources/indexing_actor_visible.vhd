@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 11/18/2021 06:55:22 PM
+-- Create Date: 03/11/2024 06:07:47 PM
 -- Design Name: 
--- Module Name: indexing_actor_visible - Behavioral
+-- Module Name: ActorVisibility - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -32,14 +32,19 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity indexing_actor_visible is
---Port ( 
-
---);
+Port ( 
+    i_pos_x : in STD_LOGIC_VECTOR (9 downto 0);
+    i_pos_y : in STD_LOGIC_VECTOR (9 downto 0);
+    i_actor_size_x : in STD_LOGIC_VECTOR (9 downto 0);
+    i_actor_size_y : in STD_LOGIC_VECTOR (9 downto 0);
+    o_is_hidden : out STD_LOGIC
+);
 end indexing_actor_visible;
 
 architecture Behavioral of indexing_actor_visible is
-
-
+    
 begin
-
+    o_is_hidden <= '0' when ( (unsigned(i_pos_x) < unsigned(i_actor_size_x)) AND (unsigned(i_pos_y) < unsigned(i_actor_size_y)) ) 
+                else '1';
+    
 end Behavioral;
