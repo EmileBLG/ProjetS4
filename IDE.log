@@ -1,0 +1,103 @@
+13:47:57 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\Users\etien\Documents\GitHub\ProjetS42\temp_xsdb_launch_script.tcl
+13:48:01 INFO  : XSCT server has started successfully.
+13:48:01 INFO  : plnx-install-location is set to ''
+13:48:01 INFO  : Successfully done setting XSCT server connection channel  
+13:48:01 INFO  : Successfully done setting workspace for the tool. 
+13:48:06 ERROR : Error encountered while initializing user repository paths
+Reason: No Platforms Found.
+
+
+13:48:06 INFO  : Platform repository initialization has completed.
+13:48:08 INFO  : Registering command handlers for Vitis TCF services
+13:48:18 INFO  : Successfully done query RDI_DATADIR 
+13:49:51 INFO  : Result from executing command 'getProjects': atelier4_wrapper
+13:49:52 INFO  : Result from executing command 'getPlatforms': 
+13:49:55 INFO  : Checking for BSP changes to sync application flags for project 'project'...
+14:00:24 INFO  : Checking for BSP changes to sync application flags for project 'project'...
+14:43:49 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\Users\etien\Documents\GitHub\ProjetS42\temp_xsdb_launch_script.tcl
+14:44:01 INFO  : Platform repository initialization has completed.
+14:44:02 INFO  : Registering command handlers for Vitis TCF services
+14:44:56 INFO  : Checking for BSP changes to sync application flags for project 'project'...
+14:45:33 INFO  : Launching the emulator on project 'project' for configuration 'Debug'
+14:46:50 ERROR : Timed out. 180 seconds have elapsed while waiting for XSCT server to launch.
+14:46:50 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\Users\etien\Documents\GitHub\ProjetS42\temp_xsdb_launch_script.tcl
+14:49:52 ERROR : Timed out. 180 seconds have elapsed while waiting for XSCT server to launch.
+14:49:52 ERROR : Failed to openhw "C:/Users/etien/Documents/GitHub/ProjetS42/atelier4_wrapper/export/atelier4_wrapper/hw/atelier4_wrapper.xsa"
+Reason: xsct server communication channel is not established.
+14:49:52 ERROR : Failed to update application flags from BSP for 'project'. Reason: null
+java.lang.NullPointerException
+	at com.xilinx.sdx.sw.internal.SDxSwPlatform.<init>(SDxSwPlatform.java:305)
+	at com.xilinx.sdx.sw.internal.SDxSwPlatform.create(SDxSwPlatform.java:214)
+	at com.xilinx.sdx.sdk.core.util.SdkPlatformHelper.getSwPlatform(SdkPlatformHelper.java:61)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.getSwPlatform(SdkMakefileGenerationListener.java:160)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.syncAppFlags(SdkMakefileGenerationListener.java:78)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.preMakefileGeneration(SdkMakefileGenerationListener.java:48)
+	at com.xilinx.sdk.managedbuilder.XilinxGnuMakefileGenerator.notifyPreMakefileGenerationListeners(XilinxGnuMakefileGenerator.java:91)
+	at com.xilinx.sdk.managedbuilder.XilinxGnuMakefileGenerator.generateMakefiles(XilinxGnuMakefileGenerator.java:40)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performMakefileGeneration(CommonBuilder.java:1008)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performPrebuildGeneration(CommonBuilder.java:873)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:748)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:832)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:220)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:263)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:316)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:319)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:371)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:392)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:515)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:412)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:291)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:42)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+14:49:52 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\Users\etien\Documents\GitHub\ProjetS42\temp_xsdb_launch_script.tcl
+14:52:53 ERROR : Timed out. 180 seconds have elapsed while waiting for XSCT server to launch.
+14:52:53 ERROR : Failed to call init_repo
+Reason: xsct server communication channel is not established.
+14:52:53 ERROR : Exception raised in executing the command =Failed to call init_repo
+Reason: xsct server communication channel is not established. 
+14:52:53 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\Users\etien\Documents\GitHub\ProjetS42\temp_xsdb_launch_script.tcl
+14:55:55 ERROR : Timed out. 180 seconds have elapsed while waiting for XSCT server to launch.
+14:55:55 ERROR : xsct server communication channel is not established.
+14:55:55 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\Users\etien\Documents\GitHub\ProjetS42\temp_xsdb_launch_script.tcl
+14:58:34 ERROR : Failed to start emulator on the project 'project' using the build configuration 'Debug'.
+14:58:43 INFO  : Launching the emulator on project 'project' for configuration 'Debug'
+14:58:56 ERROR : Timed out. 180 seconds have elapsed while waiting for XSCT server to launch.
+14:58:56 ERROR : Failed to query RDI_DATADIR
+Reason: xsct server communication channel is not established.
+14:58:56 ERROR : Exception raised in executing the command =Failed to query RDI_DATADIR
+Reason: xsct server communication channel is not established. 
+14:58:56 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\Users\etien\Documents\GitHub\ProjetS42\temp_xsdb_launch_script.tcl
+15:01:58 ERROR : Timed out. 180 seconds have elapsed while waiting for XSCT server to launch.
+15:01:58 ERROR : Failed to openhw "C:/Users/etien/Documents/GitHub/ProjetS42/atelier4_wrapper/export/atelier4_wrapper/hw/atelier4_wrapper.xsa"
+Reason: xsct server communication channel is not established.
+15:01:58 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\Users\etien\Documents\GitHub\ProjetS42\temp_xsdb_launch_script.tcl
+15:04:59 ERROR : Timed out. 180 seconds have elapsed while waiting for XSCT server to launch.
+15:04:59 ERROR : Failed to openhw "C:/Users/etien/Documents/GitHub/ProjetS42/atelier4_wrapper/export/atelier4_wrapper/hw/atelier4_wrapper.xsa"
+Reason: xsct server communication channel is not established.
+15:04:59 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\Users\etien\Documents\GitHub\ProjetS42\temp_xsdb_launch_script.tcl
+15:05:23 ERROR : Failed to start emulator on the project 'project' using the build configuration 'Debug'.
+15:05:35 INFO  : Launching the emulator on project 'project' for configuration 'Debug'
+15:07:04 ERROR : Failed to start emulator on the project 'project' using the build configuration 'Debug'.
+15:08:01 ERROR : Timed out. 180 seconds have elapsed while waiting for XSCT server to launch.
+15:08:01 ERROR : Failed to openhw "C:/Users/etien/Documents/GitHub/ProjetS42/atelier4_wrapper/export/atelier4_wrapper/hw/atelier4_wrapper.xsa"
+Reason: xsct server communication channel is not established.
+15:08:23 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\Users\etien\Documents\GitHub\ProjetS42\temp_xsdb_launch_script.tcl
+15:08:30 INFO  : Platform repository initialization has completed.
+15:08:31 INFO  : Registering command handlers for Vitis TCF services
+15:08:39 INFO  : Launching the emulator on project 'project' for configuration 'Debug'
+15:11:25 ERROR : Timed out. 180 seconds have elapsed while waiting for XSCT server to launch.
+15:11:25 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\Users\etien\Documents\GitHub\ProjetS42\temp_xsdb_launch_script.tcl
+15:14:26 ERROR : Timed out. 180 seconds have elapsed while waiting for XSCT server to launch.
+15:14:26 ERROR : Failed to openhw "C:/Users/etien/Documents/GitHub/ProjetS42/atelier4_wrapper/export/atelier4_wrapper/hw/atelier4_wrapper.xsa"
+Reason: xsct server communication channel is not established.
+15:14:27 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\Users\etien\Documents\GitHub\ProjetS42\temp_xsdb_launch_script.tcl
+15:17:28 ERROR : Timed out. 180 seconds have elapsed while waiting for XSCT server to launch.
+15:17:28 ERROR : Failed to call init_repo
+Reason: xsct server communication channel is not established.
+15:17:28 ERROR : Exception raised in executing the command =Failed to call init_repo
+Reason: xsct server communication channel is not established. 
+15:17:28 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\Users\etien\Documents\GitHub\ProjetS42\temp_xsdb_launch_script.tcl
