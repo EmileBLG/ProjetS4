@@ -18,12 +18,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -32,7 +28,7 @@
               "RelativeDocumentMoniker": "flappy\\flappy.c",
               "ToolTip": "C:\\Users\\etien\\Documents\\GitHub\\ProjetS42\\C code\\Projet Visual Studio test en Console\\flappy\\flappy.c",
               "RelativeToolTip": "flappy\\flappy.c",
-              "ViewState": "AQIAADsAAAAAAAAAAAArwGwAAAA6AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-03-12T13:56:48.173Z",
               "EditorCaption": ""
@@ -43,12 +39,11 @@
               "Title": "flappy.h",
               "DocumentMoniker": "C:\\Users\\etien\\Documents\\GitHub\\ProjetS42\\C code\\Projet Visual Studio test en Console\\flappy\\flappy.h",
               "RelativeDocumentMoniker": "flappy\\flappy.h",
-              "ToolTip": "C:\\Users\\etien\\Documents\\GitHub\\ProjetS42\\C code\\Projet Visual Studio test en Console\\flappy\\flappy.h",
-              "RelativeToolTip": "flappy\\flappy.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAOAAAA",
+              "ToolTip": "C:\\Users\\etien\\Documents\\GitHub\\ProjetS42\\C code\\Projet Visual Studio test en Console\\flappy\\flappy.h*",
+              "RelativeToolTip": "flappy\\flappy.h*",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-12T13:57:04.342Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-12T13:57:04.342Z"
             }
           ]
         }

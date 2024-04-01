@@ -7,17 +7,15 @@
 
 //Tout en variable Local, pcq idk comment l'API va fonctionner.
 //OUT VERS LE PPU:
-int BackgroundX = 0;
-int BackgroundY = 0;
-int flappyX = 0;
-int flappyY = 180;
+unsigned short int BackgroundX = 0;
+unsigned short int BackgroundY = 0;
+unsigned short int flappyX = 0;
+unsigned short int flappyY = 180;
+unsigned int tuyauxX[NB_TUYAUX] = { 500, 500, 800, 800 };
+unsigned int tuyauxY[NB_TUYAUX] = { 900, 300, 990, 350 };
+bool flappyMonte = 0;
 
-int tuyauxX[NB_TUYAUX] = { 500, 500, 800, 800};
 
-int tuyauxY[NB_TUYAUX] = { 900, 300, 990, 350};
-
-int image_debut_fin_partieX = 0;
-int image_debut_fin_partieY = 0;
 
 //IN DE LA MANETTE
 int etatBouton = 0;
@@ -56,11 +54,11 @@ void printItAll(int flappyY) {
     if (flappyY >= 0 && flappyY <= ROWS - SIZE_FLAPPY/10)
         for (int i = flappyY; i < flappyY + SIZE_FLAPPY/10; i++)
             for (int j = 0; j < SIZE_FLAPPY/10; j++)
-                matrix[i][j + 24] = 1;
+                matrix[i][j + 28] = 1;
 
     for (int k = 0; k < NB_TUYAUX; k++)
         for (int i = tuyauxY[k] / 10; i < tuyauxY[k] / 10 + HAUTEUR_TUYAUX/10; i++)
-            for (int j = tuyauxX[k] / 10; j < tuyauxX[k] / 10 + 5; j++){
+            for (int j = tuyauxX[k] / 10; j < tuyauxX[k] / 10 + LARGEUR_TUYAUX/10; j++){
                 int iMod = i % (GRILLE/10);
                 int jMod = j % (GRILLE/10);
                 if(iMod <= 36 && iMod >= 0 && jMod < 64 && jMod > 0)
@@ -96,7 +94,7 @@ int controleDePartie(int* tuyauxX, int* flappyY) {
         else
             tuyauxX[i] -= 8;
 
-        if (tuyauxX[i] >= 240 && tuyauxX[i] <= 320) {
+        if (tuyauxX[i] >= LARGEUR_ECRAN/2 - LARGEUR_TUYAUX && tuyauxX[i] <= LARGEUR_ECRAN/2) {
             int PosTuyauxHigh = (tuyauxY[i] + HAUTEUR_TUYAUX)% GRILLE;
             int PosTuyauxLow = tuyauxY[i];
 
@@ -115,13 +113,13 @@ int controleDePartie(int* tuyauxX, int* flappyY) {
 
 
 void genererDeplacementYflappy(int *flappyY, int *etatBouton, float *vitesseFlappyY) {
-    const int hauteurMin = 360- SIZE_FLAPPY; // Hauteur max du Flappy Bird (vers le bas) (nb pixelY - grosseurY du flappy)
+    const int hauteurMin = HAUTEUR_ECRAN - SIZE_FLAPPY; // Hauteur max du Flappy Bird (vers le bas) (nb pixelY - grosseurY du flappy)
 
     if (*etatBouton == 1) {
-        *vitesseFlappyY = -4; // Simuler un saut
+        *vitesseFlappyY = PUISSANCE_SAUT; // Simuler un saut
     }
     *flappyY += *vitesseFlappyY;
-    *vitesseFlappyY += 0.2;
+    *vitesseFlappyY += GRAVITE;
     
 
     // Limiter la position du Flappy Bird entre 0 et la hauteur maximale
@@ -141,7 +139,7 @@ int main() {
     const clock_t target_frame_ticks = (clock_t)(target_frame_time_ms * CLOCKS_PER_SEC / 1000.0);
     
     clock_t last_frame_time = clock();
-    float vitesseFlappyY = 2;
+    float vitesseFlappyY = VITESSE_FLAPPY_Y_INIT;
     int gameOn = 1;
     while (gameOn) {
         clock_t current_time = clock();
@@ -149,8 +147,11 @@ int main() {
 
         if (elapsed_time_ticks >= target_frame_ticks) {
             //Jeu ICI
-            genererDeplacementBackground(&BackgroundX);
+            //pour windows.h
             etatBouton = etatBarreEspace();
+
+
+            genererDeplacementBackground(&BackgroundX);
             genererDeplacementYflappy(&flappyY, &etatBouton, &vitesseFlappyY);
             gameOn = controleDePartie(tuyauxX, &flappyY);
 
