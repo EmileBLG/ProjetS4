@@ -1,4 +1,9 @@
 ﻿  flappy.c
-C:\Users\etien\Documents\GitHub\ProjetS42\C code\Projet Visual Studio test en Console\flappy\flappy.c(123,17): warning C4244: '+=' : conversion de 'float' en 'int', perte possible de données
-C:\Users\etien\Documents\GitHub\ProjetS42\C code\Projet Visual Studio test en Console\flappy\flappy.c(124,27): warning C4305: '+=' : troncation de 'double' à 'float'
+C:\Users\etien\Documents\GitHub\ProjetS42\C code\Projet Visual Studio test en Console\flappy\flappy.c(60,41): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\etien\Documents\GitHub\ProjetS42\C code\Projet Visual Studio test en Console\flappy\flappy.c(61,45): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\etien\Documents\GitHub\ProjetS42\C code\Projet Visual Studio test en Console\flappy\flappy.c(121,17): warning C4244: '+=' : conversion de 'float' en 'int', perte possible de données
+C:\Users\etien\Documents\GitHub\ProjetS42\C code\Projet Visual Studio test en Console\flappy\flappy.c(122,31): warning C4305: '+=' : troncation de 'double' à 'float'
+C:\Users\etien\Documents\GitHub\ProjetS42\C code\Projet Visual Studio test en Console\flappy\flappy.c(154,42): warning C4133: 'fonction' : types incompatibles - de 'unsigned short *' à 'int *'
+C:\Users\etien\Documents\GitHub\ProjetS42\C code\Projet Visual Studio test en Console\flappy\flappy.c(155,39): warning C4133: 'fonction' : types incompatibles - de 'unsigned short *' à 'int *'
+C:\Users\etien\Documents\GitHub\ProjetS42\C code\Projet Visual Studio test en Console\flappy\flappy.c(156,48): warning C4133: 'fonction' : types incompatibles - de 'unsigned short *' à 'int *'
   flappy.vcxproj -> C:\Users\etien\Documents\GitHub\ProjetS42\C code\Projet Visual Studio test en Console\x64\Debug\flappy.exe
