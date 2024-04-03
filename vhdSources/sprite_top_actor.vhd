@@ -33,7 +33,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 use work.package_LUT_actor.all;
 
-entity sprite_top is
+entity sprite_top_actor is
 Port ( 
     i_map_index_x : in std_logic_vector (5 downto 0);
     i_map_index_y : in std_logic_vector (5 downto 0);
@@ -44,9 +44,9 @@ Port (
     o_color_code : out std_logic_vector (3 downto 0);
     o_is_hidden : out std_logic
 );
-end sprite_top;
+end sprite_top_actor;
 
-architecture Behavioral of sprite_top is
+architecture Behavioral of sprite_top_actor is
     
     component sprite_map_index is
         port (
@@ -64,18 +64,24 @@ architecture Behavioral of sprite_top is
         );
     end component;
     
-    component sprite_map_LUT is
+    component sprite_map_LUT_actor is
+        generic (
+            map_LUT : P_LUT_MAP
+        );
         port (
             i_map_index : in std_logic_vector (11 downto 0);
             i_sprite_picker : in std_logic_vector (4 downto 0);
-            o_tile_type : out std_logic_vector (5 downto 0)
+            o_tile_type : out std_logic_vector (3 downto 0)
         );
     end component;
     
-    component sprite_tile_LUT is
+    component sprite_tile_LUT_actor is
+        generic (
+            tile_LUT : P_LUT_TILE
+        );
         port (
             i_tile_index : in std_logic_vector (7 downto 0);
-            i_tile_type : in std_logic_vector (5 downto 0);
+            i_tile_type : in std_logic_vector (3 downto 0);
             o_color_code : out std_logic_vector (3 downto 0)
         );
     end component;
@@ -90,7 +96,7 @@ architecture Behavioral of sprite_top is
     
     signal s_map_index : std_logic_vector (11 downto 0);
     signal s_tile_index : std_logic_vector (7 downto 0);
-    signal s_tile_type : std_logic_vector (5 downto 0);
+    signal s_tile_type : std_logic_vector (3 downto 0);
     signal s_color_code : std_logic_vector (3 downto 0);
     
 begin
@@ -109,14 +115,20 @@ begin
         o_tile_index => s_tile_index
     );
     
-    inst_map_LUT : sprite_map_LUT
+    inst_map_LUT : sprite_map_LUT_actor
+    generic map (
+        map_LUT => P_LUT_MAP_ACTOR_1
+    )
     port map(
         i_map_index => s_map_index,
         i_sprite_picker => i_sprite_picker,
         o_tile_type => s_tile_type
     );
     
-    inst_tile_LUT : sprite_tile_LUT
+    inst_tile_LUT : sprite_tile_LUT_actor
+    generic map (
+        tile_LUT => P_LUT_TILE_ACTOR_1
+    )
     port map (
         i_tile_index => s_tile_index,
         i_tile_type => s_tile_type,
