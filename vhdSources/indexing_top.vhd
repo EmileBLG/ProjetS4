@@ -32,15 +32,17 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity indexing_top is
-    Port ( i_relative_pos_x : in STD_LOGIC_VECTOR (9 downto 0);
-           i_relative_pos_y : in STD_LOGIC_VECTOR (9 downto 0);
-           i_actor_size_x : in STD_LOGIC_VECTOR (9 downto 0);
-           i_actor_size_y : in STD_LOGIC_VECTOR (9 downto 0);
-           o_map_index_x : out STD_LOGIC_VECTOR (5 downto 0);
-           o_map_index_y : out STD_LOGIC_VECTOR (5 downto 0);
-           o_tile_index_x : out STD_LOGIC_VECTOR (3 downto 0);
-           o_tile_index_y : out STD_LOGIC_VECTOR (3 downto 0);
-           o_is_hidden : out STD_LOGIC);
+    Port ( 
+        i_relative_pos_x : in STD_LOGIC_VECTOR (9 downto 0);
+        i_relative_pos_y : in STD_LOGIC_VECTOR (9 downto 0);
+        i_actor_size_x : in STD_LOGIC_VECTOR (9 downto 0);
+        i_actor_size_y : in STD_LOGIC_VECTOR (9 downto 0);
+        o_map_index_x : out STD_LOGIC_VECTOR (5 downto 0);
+        o_map_index_y : out STD_LOGIC_VECTOR (5 downto 0);
+        o_tile_index_x : out STD_LOGIC_VECTOR (3 downto 0);
+        o_tile_index_y : out STD_LOGIC_VECTOR (3 downto 0);
+        o_is_hidden : out STD_LOGIC
+    );
 end indexing_top;
 
 architecture Behavioral of indexing_top is

@@ -44,7 +44,7 @@ end indexing_mux_visible;
 architecture Behavioral of indexing_mux_visible is
 
 begin
-    o_pos_x <= "000000000" when (i_is_hidden = '1') else i_pos_x;
-    o_pos_y <= "000000000" when (i_is_hidden = '1') else i_pos_y;
+    o_pos_x <= "0000000000" when (i_is_hidden = '1') else i_pos_x;
+    o_pos_y <= "0000000000" when (i_is_hidden = '1') else i_pos_y;
     
 end Behavioral;

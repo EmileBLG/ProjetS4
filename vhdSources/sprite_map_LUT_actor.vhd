@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 11/18/2021 06:55:22 PM
+-- Create Date: 04/03/2024 11:15:16 AM
 -- Design Name: 
--- Module Name: sprite_map_LUT - Behavioral
+-- Module Name: sprite_map_LUT_actor - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -31,17 +31,20 @@ use IEEE.NUMERIC_STD.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-use work.package_LUT_bg.all;
+use work.package_LUT_actor.all;
 
-entity sprite_map_LUT is
+entity sprite_map_LUT_actor is
+generic (
+    map_LUT : P_LUT_MAP
+);
 Port ( 
     i_map_index : in std_logic_vector (11 downto 0);
     i_sprite_picker : in std_logic_vector (4 downto 0);
-    o_tile_type : out std_logic_vector (5 downto 0)
+    o_tile_type : out std_logic_vector (3 downto 0)
 );
-end sprite_map_LUT;
+end sprite_map_LUT_actor;
 
-architecture Behavioral of sprite_map_LUT is
+architecture Behavioral of sprite_map_LUT_actor is
     
     -- signal s_index : std_logic_vector(13 downto 0); 
     signal s_LUT_index : integer range 0 to 4095; -- (64x64 tiles)
@@ -50,6 +53,6 @@ begin
     -- s_index <= i_sprite_picker & i_map_index; -- TODO: change this to an addition
     s_LUT_index <= to_integer(unsigned( i_map_index )); -- TODO: swap i_map_index with s_index
     
-    o_tile_type <= P_LUT_MAP_BACKGROUND(s_LUT_index) ;
+    o_tile_type <= map_LUT(s_LUT_index) ;
     
 end Behavioral;
