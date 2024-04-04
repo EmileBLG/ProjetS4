@@ -102,7 +102,7 @@ architecture Behavioral of node_actor is
 
 begin
     
-    inst_space_converter_relative : space_converter_relative
+    inst_space_converter : space_converter_relative
     port map(
         ObjectPosX 	 => i_object_pos_x,
         ObjectPosY 	 => i_object_pos_y,
