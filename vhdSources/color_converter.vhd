@@ -32,51 +32,50 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity color_converter is
-Port (  ColorCode : in  STD_LOGIC_VECTOR(3 downto 0);
-         RGB       : out STD_LOGIC_VECTOR(23 downto 0)
+Port (  i_color_code : in  STD_LOGIC_VECTOR(3 downto 0);
+         o_RGB       : out STD_LOGIC_VECTOR(23 downto 0)
 );
 end color_converter;
 
 architecture Behavioral of color_converter is
 begin
-process(ColorCode)
+process(i_color_code)
     begin
-        case ColorCode is
+        case i_color_code is
             when "0000" =>
-                RGB <= "000000000000000000000000"; -- Noir
+                o_RGB <= X"000000"; -- 
             when "0001" =>
-                RGB <= "111111111111111111111111"; -- Blanc
+                o_RGB <= X"000000"; -- 
             when "0010" =>
-                RGB <= "111111000000000000000000"; -- Rouge
+                o_RGB <= X"7E7E7E"; -- 
             when "0011" =>
-                RGB <= "000000111111000000000000"; -- Vert
+                o_RGB <= X"BDBDBD"; -- 
             when "0100" =>
-                RGB <= "000000000000111111111111"; -- Bleu
+                o_RGB <= X"F8E104"; -- 
             when "0101" =>
-                RGB <= "111111110110011000000000"; -- orange
+                o_RGB <= X"F8B904"; -- 
             when "0110" =>
-                RGB <= "111111111111111100000000"; -- jaune
+                o_RGB <= X"F89806"; -- 
             when "0111" =>
-                RGB <= "110011001001100111111111"; -- violet
+                o_RGB <= X"000000"; -- 
             when "1000" =>
-                RGB <= "100000001000000010000000"; -- gris
+                o_RGB <= X"08B923"; -- 
             when "1001" =>
-                RGB <= "111111110000000011111111"; -- Rose
+                o_RGB <= X"2E8A02"; -- 
             when "1010" =>
-                RGB <= "000000000000000000000000"; -- Noir
+                o_RGB <= X"275F00"; -- 
             when "1011" =>
-                RGB <= "000000000000000000000000"; -- Noir
+                o_RGB <= X"664F2F"; -- 
             when "1100" =>
-                RGB <= "000000000000000000000000"; -- Noir
-           when "1101" =>
-                RGB <= "000000000000000000000000"; -- Noir
-           when "1110" =>
-                RGB <= "000000000000000000000000"; -- Noir
-           when "1111" =>
-                RGB <= "000000000000000000000000"; -- Noir 
+                o_RGB <= X"A2F0FD"; -- 
+            when "1101" =>
+                o_RGB <= X"72E1FF"; -- 
+            when "1110" =>
+                o_RGB <= X"72E1FF"; -- 
+            when "1111" =>
+                o_RGB <= X"FFFFFF"; -- 
             when others =>
-                RGB <= "000000000000000000000000"; 
+                o_RGB <= X"000000"; 
         end case;
    end process; 
-
 end Behavioral;
