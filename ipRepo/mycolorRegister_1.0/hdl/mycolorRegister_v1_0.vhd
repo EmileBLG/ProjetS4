@@ -16,8 +16,12 @@ entity mycolorRegister_v1_0 is
 	);
 	port (
 		-- Users to add ports here
-		o_imageDataA : out std_logic_vector(31 downto 0);
-		o_imageDataB : out std_logic_vector(31 downto 0);
+		backgroundX : out std_logic_vector(9 downto 0);
+		acteurX : out std_logic_vector(9 downto 0);
+		acteurY : out std_logic_vector(9 downto 0);
+		tuyauxX : out std_logic_vector(9 downto 0);
+		tuyauxY : out std_logic_vector(9 downto 0);
+		
 		-- User ports ends
 		-- Do not modify the ports beyond this line
 
@@ -59,6 +63,8 @@ architecture arch_imp of mycolorRegister_v1_0 is
 		
 		o_imageDataA : out std_logic_vector(31 downto 0);
 		o_imageDataB : out std_logic_vector(31 downto 0);
+		o_imageDataC : out std_logic_vector(31 downto 0);
+		o_imageDataD : out std_logic_vector(31 downto 0);
 		
 		S_AXI_ACLK	: in std_logic;
 		S_AXI_ARESETN	: in std_logic;
@@ -83,9 +89,11 @@ architecture arch_imp of mycolorRegister_v1_0 is
 		S_AXI_RREADY	: in std_logic
 		);
 	end component mycolorRegister_v1_0_S00_AXI;
-
+ signal s_imageDataTuyaux	:std_logic_vector(31 downto 0);
+ signal s_tuyauxX	:std_logic_vector(9 downto 0);
+ signal s_tuyauxY	:std_logic_vector(9 downto 0);
 begin
-
+--signal slv_reg3	:std_logic_vector(31 downto 0);
 -- Instantiation of Axi Bus Interface S00_AXI
 mycolorRegister_v1_0_S00_AXI_inst : mycolorRegister_v1_0_S00_AXI
 	generic map (
@@ -94,8 +102,10 @@ mycolorRegister_v1_0_S00_AXI_inst : mycolorRegister_v1_0_S00_AXI
 	)
 	port map (
 	
-	    o_imageDataA => o_imageDataA,
-	    o_imageDataB => o_imageDataB,
+	    o_imageDataA(9 downto 0) => backgroundX,
+	    o_imageDataB(9 downto 0) => acteurX,
+	    o_imageDataC(9 downto 0) => acteurY,
+	    o_imageDataD(31 downto 0) => s_imageDataTuyaux,
 	    
 		S_AXI_ACLK	=> s00_axi_aclk,
 		S_AXI_ARESETN	=> s00_axi_aresetn,
@@ -121,7 +131,16 @@ mycolorRegister_v1_0_S00_AXI_inst : mycolorRegister_v1_0_S00_AXI
 	);
 
 	-- Add user logic here
-
+    process(s_imageDataTuyaux)
+    begin
+        if(s_imageDataTuyaux(31)='1') then
+            s_imageDataTuyaux(9 downto 0) <= s_tuyauxY;
+        elsif (s_imageDataTuyaux(31)='0') then
+            s_imageDataTuyaux(9 downto 0) <= s_tuyauxX;
+        end if;
+    end process;
+    tuyauxX <= s_tuyauxX;
+    tuyauxY <= s_tuyauxY;
 	-- User logic ends
 
 end arch_imp;
