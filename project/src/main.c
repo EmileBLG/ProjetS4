@@ -6,21 +6,78 @@
 #include "time.h"
 #include "main.h"
 #include "stdbool.h"
+#include <stdint.h>
+#include <stdio.h>
+#include <stdio.h>
+
+//Variables pour l'envoie de données (API)
+int index_tuyaux_X=0;
+int index_tuyaux_Y=0;
 
 //Tout en variable Local, pcq idk comment l'API va fonctionner.
 //OUT VERS LE PPU:
 unsigned short int BackgroundX = 0;
-unsigned short int BackgroundY = 0;
+unsigned short int BackgroundY = 0; //cst
 unsigned short int flappyX = 0;
 unsigned short int flappyY = 180;
 unsigned int tuyauxX[NB_TUYAUX] = { 500, 500, 800, 800 };
 unsigned int tuyauxY[NB_TUYAUX] = { 900, 300, 990, 350 };
-bool flappyMonte = 0;
+bool flappyMonte = 0; //abandon
 
 
 
 //IN DE LA MANETTE
 bool etatBouton = 0;
+
+void envoyerBackgroundX(int BgX){
+	u32 Data = (u32)BgX;
+	MYCOLORREGISTER_mWriteReg(XPAR_MYCOLORREGISTER_0_S00_AXI_BASEADDR, MYCOLORREGISTER_S00_AXI_SLV_REG0_OFFSET, Data);
+}
+
+void envoyerFlappyY(int FlappyY){
+	u32 Data = (u32)FlappyY;
+	MYCOLORREGISTER_mWriteReg(XPAR_MYCOLORREGISTER_0_S00_AXI_BASEADDR, MYCOLORREGISTER_S00_AXI_SLV_REG1_OFFSET, Data);
+}
+
+void envoyerFlappyX(int FlappyX){
+	u32 Data = (u32)FlappyX;
+	MYCOLORREGISTER_mWriteReg(XPAR_MYCOLORREGISTER_0_S00_AXI_BASEADDR, MYCOLORREGISTER_S00_AXI_SLV_REG2_OFFSET, Data);
+}
+
+void tuyauxX(int tuyauX[]){
+	int n=index_tuyaux_X;
+
+	if(n<4){
+		u32 DataX = (u32)tuyauX[n];
+		MYCOLORREGISTER_mWriteReg(XPAR_MYCOLORREGISTER_0_S00_AXI_BASEADDR, MYCOLORREGISTER_S00_AXI_SLV_REG3_OFFSET, DataX);
+		index_tuyauxX++;
+
+		if (index_tuyauxX=4){
+			index_tuyauxX=0;
+		}
+	}
+	else{
+		index_tuyauxX = 0;
+	}
+}
+
+void tuyauxY(int tuyauxY[]){
+	int n=index_tuyauxY;
+
+	if(n < 4){
+		u32 DataY = (u32)tuyauY[n];
+		DataY |= 0x80000000;
+		MYCOLORREGISTER_mWriteReg(XPAR_MYCOLORREGISTER_0_S00_AXI_BASEADDR, MYCOLORREGISTER_S00_AXI_SLV_REG3_OFFSET, DataY);
+		index_tuyauxY++;
+
+		if (index_tuyauxY = 4){
+			index_tuyauxY = 0;
+		}
+	}
+	else{
+		index_tuyauxY = 0;
+	}
+}
 
 void genererDeplacementBackground(int *BackgroundX) {
     if(*BackgroundX >= GRILLE)
@@ -108,8 +165,13 @@ int main()
             gameOn = controleDePartie(tuyauxX, &flappyY);
 
             last_frame_time = current_time;
-        }
 
+            //Envoie des données de position
+            envoyerBackgroundX(BackgroundX);
+			envoyerFlappyY(flappyX);
+			tuyauxX(tuyauxX);
+			tuyauxY(tuyauxY);
+        }
 
     }
     //fin code ajoute par Etienne
@@ -117,11 +179,12 @@ int main()
 
 
 
-    while(1)
+    while(gameOn)
     {
-		MYCOLORREGISTER_mWriteReg(XPAR_MYCOLORREGISTER_0_S00_AXI_BASEADDR, 0, colorA );
+
+		//MYCOLORREGISTER_mWriteReg(XPAR_MYCOLORREGISTER_0_S00_AXI_BASEADDR, 0, colorA );
 		//MYCONTROLLERPPU_mWriteReg(XPAR_MYCONTROLLLERPPU_0_S00_AXI_BASEADDR, 0, instruction);
-		colorA = colorA + 1024;
+		//colorA = colorA + 1024;
 		sleep(1);
     }
 
